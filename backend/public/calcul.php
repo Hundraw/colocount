@@ -1,7 +1,5 @@
 <?php
 
-
-
 // fonction ajout d'une dépense (modifier en fonction de ExpenseController et ExpenseManager)
 // remplacer les valeurs par les
 
@@ -11,8 +9,7 @@ public function newExpense() {
 
     $duePerParticipants = -1 * floor(100 * $sumNewExpense % $nbParticipants)%100 ;
     $dueLastParticipant = -1 * ($sumNewExpense - ($duePerParticipants * ($nbParticipants - 1))) ;
-    return
-
+    return $duePerParticipants && $dueLastParticipant;
 }
 
 //création d'un tableau pour le remboursement (user -> somme due)
@@ -20,7 +17,7 @@ public function newExpense() {
 public function payBack() {
     $participants = array(user1 => $dueId1, user2 => $dueId2, user3 => $dueId3, user4 => $dueId4); //en fonction du nb de membre dans la colloc
     $paybackEnd = count($participants, COUNT_NORMAL);
-    $owes = array(); //tableau final pour savoir  qui doit quoi a qui
+    $owes = []; //tableau final pour savoir  qui doit quoi a qui
 
     while($paybackEnd != 0) {
         asort($participants);
@@ -41,4 +38,4 @@ public function payBack() {
         }
 }
 
-
+?>
