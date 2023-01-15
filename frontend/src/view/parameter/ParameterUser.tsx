@@ -1,35 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../../components/nav/nav";
 import BlockTitle from "../../components/block-title/BlockTitle";
 import Input from "../../components/input/input";
 import './ParameterUser';
 import Button from "../../components/button/button";
-import DeleteFlatshare from "../../components/deleteFlatshare/DeleteFlatshare";
+import ParamInvite from "../../components/paramInvite/ParamInvite";
 
 const ParameterUser = () => {
+
+  const[state, setState] = useState({
+    title : '',
+})
   
   return (
     <div>
       <Nav />
       <div className="flex justify-evenly gap-24 my-14">
-        <div className="parent-input flex flex-col gap-y-12">
+        <div className="parent-input flex items-center  flex-col gap-y-10">
           <BlockTitle name="Roommates" />
+          <ParamInvite/>
 
-          <div className="flex justify-between">
-            <Input placeholder={''} onChange={() => {''}} />
-            <DeleteFlatshare/>
-
-
-          </div>
-
-
-          <Button name="Inviter un futur colocataire" onClick={() => {''}}/>
+          <Button name="Invite a future roommate" onClick={() => {''}}/>
+          <Input placeholder={''} onChange={() => {''}} />
         </div>
 
-        <div className="flex align-center flex-col gap-y-12">
+        <div className="flex items-center flex-col gap-y-10">
           <BlockTitle name="Roommate group" />
-          <Input placeholder={''} onChange={() => {''}} />
-          <Button name="Enregistrer les modifications" onClick={() => {''}}/>
+          <Input placeholder={state.title} onChange={() => {''}} />
+          <Button name="Save Changes" onClick={() => {''}}/>
         </div>
 
       </div>
